@@ -2,11 +2,11 @@
 
   <!-- MENU SIDEBAR-->
   <aside class="menu-sidebar d-none d-lg-block">
-    <div class="logo">
+    <!-- <div class="logo">
       <a routerLink="/products">
         <img src="assets/images/logo.png" alt="luv2shop" class="img-responsive">
       </a>
-    </div>
+    </div> -->
 
     <app-product-category-menu></app-product-category-menu>
 
@@ -15,7 +15,77 @@
   
   <div class="page-container">
     <!-- HEADER DESKTOP-->
-    <header class="header-desktop">
+
+    <!-- Barra de navegação -->
+	<nav id="#accessibility-bar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-0">
+		<div class="container">
+			<!-- Botão para expansão da barra de navegação em dispositivos móveis -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- Itens da barra de navegação -->
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav mx-auto text-center">
+          <li class="nav-item ms-4">
+						<button id="btn-aumentar-fonte" class="btn btn-link nav-link">Acessibilidade</button>
+					</li>
+					<li class="nav-item ms-4">
+						<button id="btn-aumentar-fonte" class="btn btn-link nav-link">A+</button>
+					</li>
+					<li class="nav-item ms-4">
+						<button id="btn-diminuir-fonte" class="btn btn-link nav-link">A-</button>
+					</li>
+					<li class="nav-item ms-4">
+						<button id="btn-alto-contraste" class="btn btn-link nav-link">Alto contraste</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="margin-top: 42px;">
+    <div class="container">
+  
+      <div class="logo">
+        <a routerLink="/products" class="navbar-brand">
+          <img src="assets/images/logo_cupkat.png" alt="cupkat" class="img-responsive">
+          
+          <span class="logo-text">Cup</span><span class="logo-text-1">Kat</span>
+        </a>
+      </div>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ml-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categorias
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngFor="let tempProductCategory of productCategories">
+                <a class="dropdown-item" routerLink="/category/{{ tempProductCategory.id }}" routerLinkActive="active-link">
+                    {{ tempProductCategory.categoryName }}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <app-search></app-search>
+          </li>
+        </ul>
+  
+        <app-cart-status></app-cart-status>
+  
+      </div>
+    </div>
+  </nav>
+
+    <!-- <header class="header-desktop">
       <div class="section-content section-content-p30">
         <div class="container-fluid">
           <div class="header-wrap">
@@ -28,7 +98,8 @@
           <div class="account-wrap"></div>
         </div>
       </div>
-    </header>
+    </header> -->
+
     <!-- END HEADER DESKTOP-->
 
     <!-- MAIN CONTENT-->
@@ -45,8 +116,8 @@
 
 <footer>
   <ul>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Contact Us</a></li>
-    <li><a href="#">Help</a></li>
+    <li><a href="#">Sobre nós</a></li>
+    <li><a href="#">Contato</a></li>
+    <li><a href="#">Ajuda</a></li>
   </ul>
 </footer>

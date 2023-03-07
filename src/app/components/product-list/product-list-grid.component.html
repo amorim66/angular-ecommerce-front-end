@@ -1,6 +1,6 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
-        <div class="container-fluid">
+        <div class="container-fluid mt-5">
             <div class="row">
 
                 <!-- loop over the collection of products-->
@@ -17,7 +17,7 @@
                         </a>
                         <div class="">
                             <div class="price">{{ tempProduct.unitPrice | currency:'BRL' }}</div>
-                            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm cart-item-product"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                            <button (click)="addToCart(tempProduct)" class="btn btn-warning btn-sm cart-item-product"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                         </div>
                         
                     </div>

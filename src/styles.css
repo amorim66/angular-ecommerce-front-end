@@ -116,15 +116,15 @@ a,a:hover{
 }
 
 .main-content{
-    padding-top:116px;
-    min-height:100vh
+    padding-top:115px;
+    min-height:100vh;
 }
 
 aside.menu-sidebar.d-none.d-lg-block.clr{
     background:0 0;
     z-index:99999999;
     height:75px;
-    box-shadow:-2px 0 4px #0000003b
+    box-shadow:-2px 0 4px #0000003b;
 }
 
 /* 
@@ -132,6 +132,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  * Header Desktop Section
  * ----------------------------
  */
+
 
 .header-desktop{
     background:#781192;
@@ -238,7 +239,8 @@ input.au-input.au-input-xl{
 }
 
 .cart-area.d-n{
-    display:block
+    display:block;
+    margin-left: -300px;
 }
 
 .cart-area i{
@@ -247,6 +249,12 @@ input.au-input.au-input-xl{
     margin-top:16px;
     color:#fff;
     margin-left:15px
+}
+
+.custom-btn-color {
+    background-color: #ff9900 !important;
+    color: #fff;
+    border-color: #ff9900;
 }
 
 .total{
@@ -271,10 +279,10 @@ input.au-input.au-input-xl{
 }
 
 .form-header{
-    display:-webkit-box;
+    /* display:-webkit-box;
     display:-webkit-flex;
     display:-moz-box;
-    display:-ms-flexbox;
+    display:-ms-flexbox; */
     display:flex
 }
 
@@ -323,7 +331,7 @@ input.au-input.au-input-xl{
     overflow-y:auto
 }
 
-.menu-sidebar .logo{
+/* .menu-sidebar .logo{
     background:#fff;
     height:75px;
     padding:0 35px;
@@ -343,6 +351,10 @@ input.au-input.au-input-xl{
     border-right:1px solid #e5e5e5;
     position:relative;
     z-index:3
+} */
+.logo-text-1{
+    color: #ff9900;
+    font-size: 20pt;
 }
 
 .menu-sidebar .navbar-list .navbar-sub-list{
@@ -356,9 +368,10 @@ input.au-input.au-input-xl{
 
 .menu-sidebar-content{
     position:relative;
-    height:-webkit-calc(100vh - 75px);
+    /* height:-webkit-calc(100vh - 75px);
     height:-moz-calc(100vh - 75px);
-    height:calc(100vh - 75px)
+    height:calc(100vh - 75px); */
+    margin-top: 50%;
 }
 
 .navbar-sidebar{
@@ -560,6 +573,10 @@ input.au-input.au-input-xl{
     color:#585858
 }
 
+.details {
+    margin-top: 10rem !important;
+}
+
 /* 
  * ----------------------------
  * Shopping Cart Checkout
@@ -691,7 +708,7 @@ table.table.table-bordered{
     border:1px solid #dee2e6
 }
 table.table.table-bordered th{
-    BACKGROUND:#0da8e4;
+    background:#212529;
     color:#fff;
     font-size:14px;
     padding:7px
@@ -799,6 +816,20 @@ footer {
     padding: 10px 20px;
   }
 
+  /* -----------------------------
+  * Acessibilidade
+  *-------------------
+  */
+
+  .high-contrast {
+    background-color: black !important;
+    color: white;
+  }
+  
+  .high-contrast a {
+    color: yellow !important;
+  }
+
 /* 
  * ----------------------------
  * Media Queries
@@ -841,7 +872,7 @@ footer {
         font-size:22px;
         float:left;
         margin-top:16px;
-        color:#205b8d;
+        color:#ffffff;
         margin-left:15px
     }
     .header-mobile .header-mobile-bar{
@@ -872,7 +903,7 @@ footer {
         padding-bottom:100px
     }
      .cart-area.d-n{
-        display:none
+        
     }
     .form-header{
         -webkit-box-pack:center;
@@ -885,7 +916,7 @@ footer {
         min-width:350px
     }
       .logo{
-        text-align:center
+        text-align:center;
     }
     .header-desktop{
         position:relative;
@@ -936,7 +967,7 @@ footer {
         font-size:22px;
         float:left;
         margin-top:16px;
-        color:#205b8d;
+        color:#ffffff;
         margin-left:15px
     }
         .header-wrap2{
@@ -980,7 +1011,15 @@ footer {
         height:80px
     }
     a.logo img{
-        width:110px
+        width:110px;
+    }
+    
+    .logo-link {
+        text-decoration: none !important;
+    }
+
+    .logo-text-1{
+        color: rgb(250, 204, 2);
     }
 
     .cart-area i{
@@ -1019,14 +1058,14 @@ footer {
     .cart-area.d-b{
         display:block
     }
-    .cart-area.d-n{
-        display:none
+    .cart-area.d-n a{
+        margin-left: 30%;
     }
     .cart-area i{
         font-size:18px;
         float:left;
         margin-top:16px;
-        color:#03a9f4;
+        color:#ffffff;
         margin-left:15px
     }
     .total span{
