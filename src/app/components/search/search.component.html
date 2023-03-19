@@ -9,10 +9,22 @@
     </button>
 </form> -->
 
-<form class="d-flex" role="search">
+<!-- <form class="d-flex" role="search">
     <input #myInput type="text"
            placeholder="Buscar...Exemplo: Coffe Mugs, "
            class="form-control me-2" type="search" aria-label="Search"
            (keyup.enter)="doSearch(myInput.value)">
     <button (click)="doSearch(myInput.value)" class="btn btn-outline-warning" type="submit">Pesquisa</button>
-</form>
+</form> -->
+
+<input #myInput
+       type="search"
+       name="search"
+       class="search-field"
+       placeholder="Buscar...Exemplo: Coffe Mugs, "
+       (keyup.enter)="doSearch(myInput.value)">
+
+<button class="search-btn">
+<ion-icon name="search-outline" (click)="doSearch(myInput.value)"></ion-icon>
+</button>
+

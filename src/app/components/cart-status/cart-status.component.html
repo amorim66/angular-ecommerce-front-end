@@ -6,7 +6,8 @@
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
     </a>
 </div> -->
-<button routerLink="/cart-details" type="button" class="btn position-relative ms-4 custom-btn-color">
+
+<!-- <button routerLink="/cart-details" type="button" class="btn position-relative ms-4 custom-btn-color">
 
     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -14,4 +15,9 @@
       <span class="visually-hidden">unread messages</span>
     </span>
     
+</button> -->
+
+<button class="action-btn" routerLink="/cart-details" type="button">
+    <ion-icon name="bag-handle-outline"></ion-icon>
+    <span class="count">{{ totalQuantity }}</span>
 </button>

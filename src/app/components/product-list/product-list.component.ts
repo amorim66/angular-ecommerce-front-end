@@ -32,16 +32,19 @@ export class ProductListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     });
+
   }
 
   listProducts() {
-
+    
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
     if(this.searchMode){
       this.handleSearchProducts();
     } else{
+      
       this.handleListProducts();
+      
     }
   }
 
@@ -67,6 +70,7 @@ export class ProductListComponent implements OnInit {
 
   handleListProducts(){
     // check if "id" parameter is available
+    
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id')
 
     if(hasCategoryId){
@@ -84,7 +88,7 @@ export class ProductListComponent implements OnInit {
     // if we have a different category id than previous
     // then set thePageNumber back to 1
     if (this.previousCategoryId != this.currentCategoryId) {
-      this.thePageNumber = 1; 
+      this.thePageNumber = 3; 
     }
 
     this.previousCategoryId = this.currentCategoryId;

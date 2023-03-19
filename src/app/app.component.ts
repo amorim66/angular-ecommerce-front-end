@@ -1,21 +1,33 @@
 import { Component } from '@angular/core';
 import { ProductService } from './services/product.service';
 import { ProductCategory } from './common/product-category';
+import { CargarScriptsService } from './cargar-scripts.service';
+import { AccessibilityService } from './services/accessibility.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
 
   title = 'angular-ecommerce';
   productCategories: ProductCategory[] = [];
 
-  constructor(private productService: ProductService){}
+  constructor(private productService: ProductService, private accessibilityService: AccessibilityService , private _CargaScripts:CargarScriptsService ){
+    _CargaScripts.Carga(["script"]);
+  }
   
   ngOnInit() {
     this.listProductCategories();
+  }
+
+  public increaseFontSize() {
+    this.accessibilityService.increaseFontSize();
+  }
+
+  public decreaseFontSize() {
+    this.accessibilityService.decreaseFontSize();
   }
 
   listProductCategories() {

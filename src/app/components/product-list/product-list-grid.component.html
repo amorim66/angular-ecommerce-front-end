@@ -1,75 +1,95 @@
-<div class="main-content">
-    <div class="section-content section-content-p30">
-        <div class="container-fluid mt-5">
-            <div class="row">
+<div class="product-main">
 
-                <!-- loop over the collection of products-->
-                <div *ngFor="let tempProduct of products" class="col-md-3">
+    <h2 class="title">Novos Produtos</h2>
 
-                    <div class="product-box">
+    <div class="product-grid">
 
-                        <a routerLink="/products/{{ tempProduct.id }}">
-                            <img src="{{ tempProduct.imageUrl }}" class="img-responsive"/>
-                        </a>
+        <div class="showcase" *ngFor="let tempProduct of products">
 
-                        <a style="text-decoration: none;" routerLink="/products/{{ tempProduct.id }}">
-                            <h1>{{ tempProduct.name }}</h1>
-                        </a>
-                        <div class="">
-                            <div class="price">{{ tempProduct.unitPrice | currency:'BRL' }}</div>
-                            <button (click)="addToCart(tempProduct)" class="btn btn-warning btn-sm cart-item-product"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-                        </div>
+            <div class="showcase-banner">
+                <a routerLink="/products/{{ tempProduct.id }}">
+                    <img src="{{ tempProduct.imageUrl }}" alt="Mens Winter Leathers Jackets" width="300"
+                        class="product-img default">
+                    <img src="{{ tempProduct.imageUrl }}" alt="Mens Winter Leathers Jackets" width="300"
+                        class="product-img hover">
+                </a>
+                <!--Feature de desconto-->
+                <!-- <p class="showcase-badge">15%</p> -->
+
+                <div class="showcase-actions">
+
+                    <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+
+                    <button class="btn-action" (click)="addToCart(tempProduct)">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                    
+
+                </div>
+
+            </div>
+
+            <div class="showcase-content">
+
+                <a routerLink="/products/{{ tempProduct.id }}">
+                    <h3 class="showcase-title">{{ tempProduct.name }}</h3>
+                </a>
+
+                <div class="price-box">
+                    <p class="price">{{ tempProduct.unitPrice | currency:'BRL' }}</p>
+                    <del>R$75,00</del>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--if products empty then display a message-->
+        <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+            Sem resultados para busca.
+        </div>
+
+    </div>
+
+     <!--begin footer-->
+     <div class="footer-pagination">
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-9" style="padding-left: 30%">
                         
+                        <ngb-pagination [(page)]="thePageNumber"
+                                        [pageSize]="thePageSize"
+                                        [collectionSize]="theTotalElements"
+                                        [maxSize]="5"
+                                        [boundaryLinks]="true"
+                                        (pageChange)="listProducts()">
+                        </ngb-pagination>
+
+                    </div>
+
+                    <div>
+                        <span class="me-2">Itens/Página</span>
+
+                        <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
+                            <option>2</option>
+                            <option selected="true">5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                        </select>
                     </div>
                     
                 </div>
-
-                <!--if products empty then display a message-->
-                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-                    Sem resultados para busca.
-                </div>
-
             </div>
-
-            <!--begin footer-->
-            <div class="footer-pagination">
-                <div class="row">
-                    <div class="col-md-6">
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-9" style="padding-left: 30%">
-                                
-                                <ngb-pagination [(page)]="thePageNumber"
-                                                [pageSize]="thePageSize"
-                                                [collectionSize]="theTotalElements"
-                                                [maxSize]="5"
-                                                [boundaryLinks]="true"
-                                                (pageChange)="listProducts()">
-                                </ngb-pagination>
-
-                            </div>
-
-                            <div class="col-md-5 mt-2" style="text-align: right;">
-                                <span class="me-2">Page Size</span>
-
-                                <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
-                                    <option>2</option>
-                                    <option selected="true">5</option>
-                                    <option>10</option>
-                                    <option>20</option>
-                                    <option>50</option>
-                                </select>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--end footer-->
-
         </div>
     </div>
+
+    <!--end footer-->
+
 </div>

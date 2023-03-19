@@ -1,4 +1,4 @@
-<div class="menu-sidebar-content js-scrollbar1">
+<!-- <div class="menu-sidebar-content js-scrollbar1">
     <nav class="navbar-sidebar">
         <ul class="list-unstyled navbar-list">
             
@@ -13,4 +13,46 @@
         </ul>
     </nav>
     
-</div>
+</div> -->
+<div class="sidebar-category">
+
+    <div class="sidebar-top">
+      <h2 class="sidebar-title">Categoria</h2>
+
+      <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+    </div>
+
+    <ul class="sidebar-menu-category-list">
+
+      <li *ngFor="let tempProductCategory of productCategories" class="sidebar-menu-category">
+
+        <button class="sidebar-accordion-menu" data-accordion-btn>
+
+          <div class="menu-title-flex">
+
+            
+            <img src="assets/images/icons/shoes.svg" alt="clothes" width="20" height="20"
+              class="menu-title-img">
+            <a class="menu-title" routerLink="/category/{{ tempProductCategory.id }}" routerLinkActive="active-link">
+                {{ tempProductCategory.categoryName }}
+            </a>
+          </div>
+
+          
+
+          <div>
+            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+          </div>
+
+        </button>
+
+      </li>
+
+     
+
+    </ul>
+
+  </div>

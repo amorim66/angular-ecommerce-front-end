@@ -1,6 +1,8 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { CargarScriptsService } from './cargar-scripts.service';
+
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule} from '@angular/common/http';
@@ -14,9 +16,11 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+
 
 registerLocaleData(ptBr);
 
@@ -41,16 +45,17 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    CheckoutComponent,
+    CheckoutComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule, 
     HttpClientModule, 
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IonicModule.forRoot()
   ],
-  providers: [ProductService,  { provide: LOCALE_ID, useValue: 'pt' },],
+  providers: [ProductService,  { provide: LOCALE_ID, useValue: 'pt' }, CargarScriptsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
