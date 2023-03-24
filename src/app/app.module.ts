@@ -21,6 +21,8 @@ import { IonicModule } from '@ionic/angular';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 
 registerLocaleData(ptBr);
 
@@ -53,7 +55,8 @@ const routes: Routes = [
     HttpClientModule, 
     NgbModule,
     ReactiveFormsModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   providers: [ProductService,  { provide: LOCALE_ID, useValue: 'pt' }, CargarScriptsService],
   bootstrap: [AppComponent]

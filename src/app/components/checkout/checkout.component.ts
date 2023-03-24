@@ -10,6 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { ShopFormServiceService } from 'src/app/services/shop-form-service.service';
 import { CupKatValidators } from 'src/app/validators/cup-kat-validators';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkout',
@@ -31,11 +32,13 @@ export class CheckoutComponent implements OnInit {
   shippingAddressStates: State[] = [];
   billingAddressStates: State[] = [];
 
+
   constructor(private formBuilder: FormBuilder,
     private shopFormService: ShopFormServiceService,
     private cartService: CartService,
     private checkoutService: CheckoutService,
-    private router: Router) { }
+    private router: Router, private http: HttpClient) { }
+
 
   ngOnInit(): void {
 
@@ -61,9 +64,13 @@ export class CheckoutComponent implements OnInit {
         city: new FormControl('', [Validators.required, Validators.minLength(2),
                                    CupKatValidators.notOnlyWhitespace]),
         state: new FormControl('', [Validators.required]),
-        country: new FormControl('', [Validators.required]),
         zipCode: new FormControl('', [Validators.required, Validators.minLength(2),
-                                      CupKatValidators.notOnlyWhitespace])
+                                      CupKatValidators.notOnlyWhitespace]),
+        number: new FormControl('', [Validators.required, Validators.minLength(2),
+                                  CupKatValidators.notOnlyWhitespace]),
+        complement: new FormControl('', [Validators.minLength(2)]),
+        bairro: new FormControl('', [Validators.required, Validators.minLength(2),
+          CupKatValidators.notOnlyWhitespace])
       }),
       billingAddress: this.formBuilder.group({
         street: new FormControl('', [Validators.required, Validators.minLength(2),
@@ -71,9 +78,13 @@ export class CheckoutComponent implements OnInit {
         city: new FormControl('', [Validators.required, Validators.minLength(2),
                                    CupKatValidators.notOnlyWhitespace]),
         state: new FormControl('', [Validators.required]),
-        country: new FormControl('', [Validators.required]),
         zipCode: new FormControl('', [Validators.required, Validators.minLength(2),
-                                      CupKatValidators.notOnlyWhitespace])
+                                      CupKatValidators.notOnlyWhitespace]),
+        number: new FormControl('', [Validators.required, Validators.minLength(2),
+                                      CupKatValidators.notOnlyWhitespace]),
+        complement: new FormControl('', [Validators.minLength(2)]),
+        bairro: new FormControl('', [Validators.required, Validators.minLength(2),
+          CupKatValidators.notOnlyWhitespace])
       }),
       creditCard: this.formBuilder.group({
         cardType: new FormControl('', [Validators.required]),
@@ -107,16 +118,45 @@ export class CheckoutComponent implements OnInit {
       }
     );
 
-    // populate contries
-
-    this.shopFormService.getCountries().subscribe(
-      data => {
-        console.log("Retrieved countries: " + JSON.stringify(data));
-        this.countries = data;
+    // Adiciona evento de mudança no campo de CEP
+    this.shippingAddressZipCode!.valueChanges.subscribe((value: string) => {
+      console.log("passou!");
+      if (value && value.length === 8) {
+        this.consultarCEPShipping(value);
       }
-    );
+    });
+
+    this.billingAddressZipCode!.valueChanges.subscribe((value: string) => {
+      console.log("passou!");
+      if (value && value.length === 8) {
+        this.consultarCEPBilling(value);
+      }
+    });
 
   }
+
+  // Função para consultar CEP e preencher campos do formulário
+  consultarCEPShipping(cep: string) {
+    this.http.get(`https://viacep.com.br/ws/${cep}/json/`).subscribe((data: any) => {
+      // Preenche campos do formulário com dados do CEP
+      this.shippingAddressStreet!.setValue(data.logradouro);
+      this.shippingAddressBairro!.setValue(data.bairro);
+      this.shippingAddressCity!.setValue(data.localidade);
+      this.shippingAddressState!.setValue(data.uf);
+    });
+  }
+
+  // Função para consultar CEP e preencher campos do formulário
+  consultarCEPBilling(cep: string) {
+    this.http.get(`https://viacep.com.br/ws/${cep}/json/`).subscribe((data: any) => {
+      // Preenche campos do formulário com dados do CEP
+      this.billingAddressStreet!.setValue(data.logradouro);
+      this.billingAddressBairro!.setValue(data.bairro);
+      this.billingAddressCity!.setValue(data.localidade);
+      this.billingAddressState!.setValue(data.uf);
+    });
+  }
+
 
   reviewCartDetails() {
 
@@ -136,19 +176,23 @@ export class CheckoutComponent implements OnInit {
   get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
   get email() { return this.checkoutFormGroup.get('customer.email'); }
 
-  get shippingAddressCountry() { return this.checkoutFormGroup.get('shippingAddress.country'); }
   get shippingAddressStreet() { return this.checkoutFormGroup.get('shippingAddress.street'); }
   get shippingAddressCity() { return this.checkoutFormGroup.get('shippingAddress.city'); }
   get shippingAddressState() { return this.checkoutFormGroup.get('shippingAddress.state'); }
   get shippingAddressZipCode() { return this.checkoutFormGroup.get('shippingAddress.zipCode'); }
   get shippingAddressZipCountry() { return this.checkoutFormGroup.get('shippingAddress.country'); }
+  get shippingAddressNumber() { return this.checkoutFormGroup.get('shippingAddress.number'); }
+  get shippingAddressComplement() { return this.checkoutFormGroup.get('shippingAddress.complement'); }
+  get shippingAddressBairro() { return this.checkoutFormGroup.get('shippingAddress.bairro'); }
 
-  get billingAddressCountry() { return this.checkoutFormGroup.get('billingAddress.country'); }
   get billingAddressStreet() { return this.checkoutFormGroup.get('billingAddress.street'); }
   get billingAddressCity() { return this.checkoutFormGroup.get('billingAddress.city'); }
   get billingAddressState() { return this.checkoutFormGroup.get('billingAddress.state'); }
   get billingAddressZipCode() { return this.checkoutFormGroup.get('billingAddress.zipCode'); }
   get billingAddressZipCountry() { return this.checkoutFormGroup.get('billingAddress.country'); }
+  get billingAddressNumber() { return this.checkoutFormGroup.get('billingAddress.number'); }
+  get billingAddressComplement() { return this.checkoutFormGroup.get('billingAddress.complement'); }
+  get billingAddressBairro() { return this.checkoutFormGroup.get('billingAddress.bairro'); }
 
   get creditCardType() { return this.checkoutFormGroup.get('creditCard.cardType'); }
   get creditCardNameOnCard() { return this.checkoutFormGroup.get('creditCard.nameOnCard'); }
@@ -208,22 +252,11 @@ export class CheckoutComponent implements OnInit {
     
     // populate purchase - shipping address
     purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
-    const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress?.state));
-    const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress?.country));
-    if (purchase.shippingAddress) {
-      purchase.shippingAddress.state = shippingState.name;
-      purchase.shippingAddress.country = shippingCountry.name;
-    }
+
     
     // populate purchase - billing address
     purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
-    const billingState: State = JSON.parse(JSON.stringify(purchase.billingAddress?.state));
-    const billingCountry: Country = JSON.parse(JSON.stringify(purchase.billingAddress?.country));
     
-    if (purchase.billingAddress) {
-      purchase.billingAddress.state = billingState.name ?? '';
-      purchase.billingAddress.country = billingCountry.name ?? '';
-    }
 
     // populate purchase - order and orderItems
     purchase.order = order;
@@ -289,32 +322,6 @@ export class CheckoutComponent implements OnInit {
         this.creditCardMonths = data;
       }
     );
-  }
-
-  getStates(formGroupName: string) {
-
-    const formGroup = this.checkoutFormGroup.get(formGroupName);
-
-    const countryCode = formGroup?.value.country.code;
-    const countryName = formGroup?.value.country.name;
-
-    console.log(`${formGroupName} country code: ${countryCode}`);
-    console.log(`${formGroupName} country name: ${countryName}`);
-
-    this.shopFormService.getStates(countryCode).subscribe(
-      data => {
-
-        if (formGroupName === 'shippingAddress') {
-          this.shippingAddressStates = data;
-        } else {
-          this.billingAddressStates = data;
-        }
-
-        //select first item by default
-        formGroup?.get('state')?.setValue(data[0]);
-      }
-    );
-
   }
 
 }

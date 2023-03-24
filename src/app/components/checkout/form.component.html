@@ -1,0 +1,38 @@
+<form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+    <!--customer form group-->
+    <div formGroupName="customer">
+      <div class="row">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control" formControlName="firstName">
+        
+        <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="alert alert-danger mt-1">
+                                    
+          <div *ngIf="firstName?.errors?.['required'] || firstName?.errors?.['notOnlyWhitespace']">
+              Nome é obrigatório
+          </div>
+
+          <div *ngIf="firstName?.errors?.['minlength']">
+              Por favor, insira um valor com pelo menos 2 caracteres.
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="mb-3">
+          <label class="form-label">Sobrenome</label>
+          <input type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+      </div>
+
+    </div>
+    
+    
+    
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
