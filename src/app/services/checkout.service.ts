@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class CheckoutService {
 
-  private purchaseUrl = 'http://apibackendecommerce-env.eba-9nmtemsh.us-east-2.elasticbeanstalk.com/api/checkout/purchase';
+  private purchaseUrl = 'http://apiecommerce-env.eba-h5eui2rn.us-east-2.elasticbeanstalk.com/api/checkout/purchase';
 
 
   constructor(private httpClient: HttpClient) { }
