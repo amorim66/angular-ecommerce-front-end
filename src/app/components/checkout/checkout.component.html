@@ -10,10 +10,10 @@
                     <h3>Cliente</h3>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label required">Primeiro Nome</label></div>
+                        <div class="col-md-5"><label for="firstName" class="form-label required">Primeiro Nome</label></div>
                         <div class="col-md-9">
                             <div class="mb-2">
-                                <input formControlName="firstName" type="text" class="form-control" placeholder="Exemplo: Maria">
+                                <input id="firstName" formControlName="firstName" type="text" class="form-control" placeholder="Exemplo: Maria">
 
 
                                 <div *ngIf="firstName?.invalid && (firstName?.dirty || firstName?.touched)" class="alert alert-danger mt-1">
@@ -32,10 +32,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label required">Sobrenome</label></div>
+                        <div class="col-md-5"><label for="lastName" class="form-label required">Sobrenome</label></div>
                         <div class="col-md-9">
                             <div class="mb-2">
-                                <input formControlName="lastName" type="text" class="form-control" placeholder="Exemplo: Rodrigues da Silva">
+                                <input id="lastName" formControlName="lastName" type="text" class="form-control" placeholder="Exemplo: Rodrigues da Silva">
 
                                 <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="alert alert-danger mt-1">
                                     
@@ -53,10 +53,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label required">Email</label></div>
+                        <div class="col-md-5"><label for="email" class="form-label required">Email</label></div>
                         <div class="col-md-9">
                             <div class="mb-3">
-                                <input formControlName="email" type="text" class="form-control" placeholder="Exemplo: mariarodrigues@email.com">
+                                <input id="email" formControlName="email" type="text" class="form-control" placeholder="Exemplo: mariarodrigues@email.com">
 
                                 <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="alert alert-danger mt-1">
                                     
@@ -80,10 +80,10 @@
                     <h3>Endereço de Entrega</h3>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label required">CEP</label></div>
+                        <div class="col-md-5"><label for="zipCode" class="form-label required">CEP</label></div>
                         <div class="col-md-9">
                             <div class="mb-2">
-                                <input formControlName="zipCode" placeholder="Exemplo: 99999-999" type="text" class="form-control" mask="00000-000">
+                                <input id="zipCode" formControlName="zipCode" placeholder="Exemplo: 99999-999" type="text" class="form-control" mask="00000-000">
 
                                 <div *ngIf="shippingAddressZipCode?.invalid && (shippingAddressZipCode?.dirty || shippingAddressZipCode?.touched)" class="alert alert-danger mt-1">
                                     <div *ngIf="shippingAddressZipCode?.errors?.['required']">
@@ -122,10 +122,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label required">Número</label></div>
+                        <div class="col-md-5"><label for="number" class="form-label required">Número</label></div>
                         <div class="col-md-9">
                             <div class="mb-2">
-                                <input formControlName="number" type="text" class="form-control">
+                                <input formControlName="number" id="number" type="text" class="form-control">
 
                                 <div *ngIf="shippingAddressNumber?.invalid && (shippingAddressNumber?.dirty || shippingAddressNumber?.touched)" class="alert alert-danger mt-1">
                                     <div *ngIf="shippingAddressNumber?.errors?.['required']">
@@ -141,10 +141,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label">Complmento</label></div>
+                        <div class="col-md-5"><label class="form-label" for="complement">Complmento</label></div>
                         <div class="col-md-9">
                             <div class="mb-2">
-                                <input formControlName="complement" type="text" class="form-control" placeholder="Exemplo: Bloco, Apartamento etc.">
+                                <input formControlName="complement" id="complement" type="text" class="form-control" placeholder="Exemplo: Bloco, Apartamento etc.">
 
                                 <div *ngIf="shippingAddressComplement?.invalid && (shippingAddressComplement?.dirty || shippingAddressComplement?.touched)" class="alert alert-danger mt-1">
                                     
@@ -229,10 +229,10 @@
                     <h3>Endereço de Pagamento</h3>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label required">CEP</label></div>
+                        <div class="col-md-5"><label class="form-label required" for="zipCode2">CEP</label></div>
                         <div class="col-md-9">
                             <div class="mb-2">
-                                <input formControlName="zipCode" type="text" class="form-control" placeholder="Exemplo: 99999-999" mask="00000-000">
+                                <input formControlName="zipCode" id="zipCode2" type="text" class="form-control" placeholder="Exemplo: 99999-999" mask="00000-000">
 
                                 <div *ngIf="billingAddressZipCode?.invalid && (billingAddressZipCode?.dirty || billingAddressZipCode?.touched)" class="alert alert-danger mt-1">
                                     <div *ngIf="billingAddressZipCode?.errors?.['required']">
@@ -273,10 +273,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label required">Número</label></div>
+                        <div class="col-md-5"><label class="form-label required" for="number2">Número</label></div>
                         <div class="col-md-9">
                             <div class="mb-2">
-                                <input formControlName="number" type="text" class="form-control">
+                                <input id="number2" formControlName="number" type="text" class="form-control">
 
                                 <div *ngIf="billingAddressNumber?.invalid && (billingAddressNumber?.dirty || billingAddressNumber?.touched)" class="alert alert-danger mt-1">
                                     <div *ngIf="billingAddressNumber?.errors?.['required']">
@@ -292,10 +292,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-5"><label class="form-label">Complmento</label></div>
+                        <div class="col-md-5"><label for="complement2" class="form-label">Complmento</label></div>
                         <div class="col-md-9">
                             <div class="mb-2">
-                                <input formControlName="complement" type="text" class="form-control" placeholder="Exemplo: Bloco, Apartamento etc.">
+                                <input id="complement2" formControlName="complement" type="text" class="form-control" placeholder="Exemplo: Bloco, Apartamento etc.">
 
                                 <div *ngIf="billingAddressComplement?.invalid && (billingAddressComplement?.dirty || billingAddressComplement?.touched)" class="alert alert-danger mt-1">
                                     
@@ -372,10 +372,10 @@
                     <h3>Cartão de Crédito</h3>
     
                         <div class="row">
-                            <div class="col-md-5"><label class="form-label required">Tipo cartão</label></div>
+                            <div class="col-md-5"><label for="cardType" class="form-label required">Tipo cartão</label></div>
                             <div class="col-md-9">
                                 <div class="mb-2">
-                                    <select formControlName="cardType" class="form-select">
+                                    <select id="cardType" formControlName="cardType" class="form-select">
                                         <option>Visa</option>
                                         <option>Mastercard</option>
                                     </select>
@@ -391,10 +391,10 @@
                         </div>
     
                         <div class="row">
-                            <div class="col-md-5"><label class="form-label required">Nome Titular</label></div>
+                            <div class="col-md-5"><label for="nameOnCard" class="form-label required">Nome Titular</label></div>
                             <div class="col-md-9">
                                 <div class="mb-2">
-                                    <input formControlName="nameOnCard" type="text" placeholder="Digite como está no cartão" class="form-control">
+                                    <input id="nameOnCard" formControlName="nameOnCard" type="text" placeholder="Digite como está no cartão" class="form-control">
                                 </div>
 
                                 <div *ngIf="creditCardNameOnCard?.invalid && (creditCardNameOnCard?.dirty || creditCardNameOnCard?.touched)" class="alert alert-danger mt-1">
@@ -411,10 +411,10 @@
                         </div>
                         
                         <div class="row">
-                            <div class="col-md-5"><label class="form-label required">Número do cartão</label></div>
+                            <div class="col-md-5"><label for="cardNumber" class="form-label required">Número do cartão</label></div>
                             <div class="col-md-9">
                                 <div class="mb-2">
-                                    <input formControlName="cardNumber" type="text" class="form-control" mask="0000 0000 0000 0000" placeholder="Exemplo: 0000 0000 0000 0000">
+                                    <input id="cardNumber" formControlName="cardNumber" type="text" class="form-control" mask="0000 0000 0000 0000" placeholder="Exemplo: 0000 0000 0000 0000">
 
                                     <div *ngIf="creditCardNumber?.invalid && (creditCardNumber?.dirty || creditCardNumber?.touched)" class="alert alert-danger mt-1">
                                         <div *ngIf="creditCardNumber?.errors?.['required']">
@@ -430,10 +430,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-5"><label class="form-label required">Cód. de segurança</label></div>
+                            <div class="col-md-5"><label for="securityCode" class="form-label required">Cód. de segurança</label></div>
                             <div class="col-md-9">
                                 <div class="mb-2">
-                                    <input formControlName="securityCode" type="text" class="form-control" mask="000">
+                                    <input id="securityCode" formControlName="securityCode" type="text" class="form-control" mask="000">
 
                                     <div *ngIf="creditCardSecurityCode?.invalid && (creditCardSecurityCode?.dirty || creditCardSecurityCode?.touched)" class="alert alert-danger mt-1">
                                         <div *ngIf="creditCardSecurityCode?.errors?.['required']">
@@ -449,10 +449,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-5"><label class="form-label required">Mês de Vencimento</label></div>
+                            <div class="col-md-5"><label for="expirationMonth" class="form-label required">Mês de Vencimento</label></div>
                             <div class="col-md-9">
                                 <div class="mb-2">
-                                    <select formControlName="expirationMonth" class="form-select">
+                                    <select id="expirationMonth" formControlName="expirationMonth" class="form-select">
                                         <option *ngFor="let month of creditCardMonths">
                                             {{ month }}
                                         </option>
@@ -462,10 +462,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-5"><label class="form-label required">Ano de Vencimento</label></div>
+                            <div class="col-md-5"><label for="expirationYear" class="form-label required">Ano de Vencimento</label></div>
                             <div class="col-md-9">
                                 <div class="mb-5">
-                                    <select formControlName="expirationYear" (change)="handleMonthsAndYears()" class="form-select">
+                                    <select id="expirationYear" formControlName="expirationYear" (change)="handleMonthsAndYears()" class="form-select">
                                         <option *ngFor="let year of creditCardYears">
                                             {{ year }}
                                         </option>
