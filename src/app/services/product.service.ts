@@ -9,9 +9,9 @@ import { ProductCategory } from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://apibackend-env.eba-sqysjtki.us-east-2.elasticbeanstalk.com/api/products';
+  private baseUrl = 'http://apidockerbackend-env.eba-kvqvdgym.us-east-2.elasticbeanstalk.com/api/products';
 
-  private categoryUrl = 'http://apibackend-env.eba-sqysjtki.us-east-2.elasticbeanstalk.com/api/product-category';
+  private categoryUrl = 'http://apidockerbackend-env.eba-kvqvdgym.us-east-2.elasticbeanstalk.com/api/product-category';
 
   constructor(private httpClient: HttpClient) { }
 
