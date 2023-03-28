@@ -22,11 +22,31 @@ import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
 import { NgxMaskModule } from 'ngx-mask';
+import { LoginComponent } from './components/login/login.component';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
+import { from } from 'rxjs';
+
+import {
+  OktaAuthModule,
+  OktaCallbackComponent,
+  OKTA_CONFIG
+} from '@okta/okta-angular';
+
+import { OktaAuth } from '@okta/okta-auth-js';
+
+import myAppConfig from './config/my-app-config';
+
+const oktaConfig = myAppConfig.oidc;
+
+const oktaAuth = new OktaAuth(oktaConfig);
 
 
 registerLocaleData(ptBr);
 
 const routes: Routes = [
+  {path: 'login/callback', component: OktaCallbackComponent},
+  {path: 'login', component: LoginComponent},
+
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
@@ -47,7 +67,9 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LoginComponent,
+    LoginStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -56,9 +78,10 @@ const routes: Routes = [
     NgbModule,
     ReactiveFormsModule,
     IonicModule.forRoot(),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    OktaAuthModule
   ],
-  providers: [ProductService,  { provide: LOCALE_ID, useValue: 'pt' }, CargarScriptsService],
+  providers: [ProductService,  { provide: LOCALE_ID, useValue: 'pt' }, CargarScriptsService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
