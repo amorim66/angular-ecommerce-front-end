@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
         pkce: true,
         issuer: myAppConfig.oidc.issuer,
         scopes: myAppConfig.oidc.scopes
-      }
+      },
+      
     });
   }
 
