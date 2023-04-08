@@ -110,6 +110,37 @@
 
     </div>
 
+    <div class="notification-toast" data-toast *ngIf="showToast">
+
+        <button class="toast-close-btn" data-toast-close (click)="closeToast()">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+    
+        <div class="toast-banner">
+          <img src="{{ toastProduct.imageUrl }}" alt="Rose Gold Earrings" width="80" height="70">
+        </div>
+    
+        <div class="toast-detail">
+    
+          <p class="toast-message">
+            Item adicionado ao carrinho! 
+          </p>
+    
+          <p class="toast-title">
+            {{toastProduct.name}}
+          </p>
+    
+          <button routerLink="/cart-details" class="toast-button">
+            Ir ao carrinho
+            <ion-icon name="bag-handle-outline" class="ms-2"></ion-icon>
+          </button>
+            
+          
+    
+        </div>
+    
+      </div>
+
 </div>
 
 

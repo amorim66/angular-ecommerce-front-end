@@ -13,6 +13,8 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductDetailsComponent implements OnInit {
   
   product!: Product;
+  toastProduct!: Product;
+  showToast = false;
 
   constructor(private productService: ProductService,
               private cartService: CartService,
@@ -40,9 +42,20 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(){
     console.log(`Adding to cart: ${this.product.name}, ${this.product.unitPrice}`);
     const theCartItem = new CartItem(this.product);
+
+    this.showToast = true;
+    setTimeout(() => {
+      this.showToast = false;
+    }, 8000);
+
+    this.toastProduct = this.product;
+
     this.cartService.addToCart(theCartItem);
   }
 
+  closeToast(){
+    this.showToast = false;
+  }
 
 
 }
