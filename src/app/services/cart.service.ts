@@ -15,7 +15,6 @@ export class CartService {
   storage: Storage = localStorage;
 
   constructor() {
-
     // read data from storage
     let data = JSON.parse(this.storage!.getItem('cartItems')!);
 
@@ -52,6 +51,7 @@ export class CartService {
 
   // compute cart total price and total quantity
   this.computeCartTotals();
+  
   }
 
   computeCartTotals() {

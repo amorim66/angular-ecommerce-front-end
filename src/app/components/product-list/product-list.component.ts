@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartItem } from 'src/app/common/cart-item';
 import { Product } from 'src/app/common/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +13,8 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  
+  toastProduct!: Product;
+  showToast = false;
   products: Product[] = [];
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
@@ -21,40 +24,41 @@ export class ProductListComponent implements OnInit {
   thePageNumber: number = 1;
   thePageSize: number = 5;
   theTotalElements: number = 0;
-  
+
   previousKeyword: string = "";
 
   constructor(private productService: ProductService,
-              private cartService: CartService,
-              private route: ActivatedRoute){}
-  
+    private cartService: CartService,
+    private route: ActivatedRoute, private modalService: NgbModal) { }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     });
-
+    
   }
 
+
   listProducts() {
-    
+
     this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
-    if(this.searchMode){
+    if (this.searchMode) {
       this.handleSearchProducts();
-    } else{
-      
+    } else {
+
       this.handleListProducts();
-      
+
     }
   }
 
-  handleSearchProducts(){
+  handleSearchProducts() {
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
 
     // if we have a different keyword than previous
     // then set thePageNumber to 1
 
-    if(this.previousKeyword != theKeyword){
+    if (this.previousKeyword != theKeyword) {
       this.thePageNumber = 1;
     }
 
@@ -64,19 +68,19 @@ export class ProductListComponent implements OnInit {
 
     // now search for the products using keyword
     this.productService.searchProductsPaginate(this.thePageNumber - 1,
-                                               this.thePageSize,
-                                               theKeyword).subscribe(this.processResult());
+      this.thePageSize,
+      theKeyword).subscribe(this.processResult());
   }
 
-  handleListProducts(){
+  handleListProducts() {
     // check if "id" parameter is available
-    
+
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id')
 
-    if(hasCategoryId){
+    if (hasCategoryId) {
       //get the "id" param string. convert string to a number using the "+" symbol
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
-    } else{
+    } else {
       // not category id available ... default to category id 1
       this.currentCategoryId = 1;
     }
@@ -88,7 +92,7 @@ export class ProductListComponent implements OnInit {
     // if we have a different category id than previous
     // then set thePageNumber back to 1
     if (this.previousCategoryId != this.currentCategoryId) {
-      this.thePageNumber = 3; 
+      this.thePageNumber = 3;
     }
 
     this.previousCategoryId = this.currentCategoryId;
@@ -97,19 +101,19 @@ export class ProductListComponent implements OnInit {
 
     // now get the products for the given category id
     this.productService.getProductListPaginate(this.thePageNumber - 1,
-                                               this.thePageSize,
-                                               this.currentCategoryId)
-                                               .subscribe(this.processResult());
+      this.thePageSize,
+      this.currentCategoryId)
+      .subscribe(this.processResult());
   }
 
-  updatePageSize(pageSize: string){
+  updatePageSize(pageSize: string) {
     this.thePageSize = +pageSize;
     this.thePageNumber = 1;
     this.listProducts();
   }
 
-  processResult(){
-    return (data: any) =>{
+  processResult() {
+    return (data: any) => {
       this.products = data._embedded.products;
       this.thePageNumber = data.page.number + 1;
       this.thePageSize = data.page.size;
@@ -117,11 +121,24 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  addToCart(theProduct: Product){
+  addToCart(theProduct: Product) {
     console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
-    
+  
     const theCartItem = new CartItem(theProduct);
 
+    this.showToast = true;
+    setTimeout(() => {
+      this.showToast = false;
+    }, 8000);
+
+    this.toastProduct = theProduct;
+
     this.cartService.addToCart(theCartItem);
+
   }
+
+  closeToast(){
+    this.showToast = false;
+  }
+
 }
