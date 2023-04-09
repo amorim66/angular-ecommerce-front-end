@@ -1,7 +1,7 @@
-<div class="product-main">
+<div class="product-main" id="product-main">
 
-    <h2 class="title">Novos Produtos</h2>
-
+    <h2 class="title" *ngIf="searchMode != true">Novos Produtos</h2>
+    <h2 class="title" *ngIf="searchMode">Resultados da busca: {{ previousKeyword }}</h2>
     <div class="product-grid">
 
         <div class="showcase" *ngFor="let tempProduct of products">

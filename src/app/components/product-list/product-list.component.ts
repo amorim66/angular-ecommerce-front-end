@@ -27,6 +27,7 @@ export class ProductListComponent implements OnInit {
 
   previousKeyword: string = "";
 
+
   constructor(private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute, private modalService: NgbModal) { }
@@ -57,7 +58,7 @@ export class ProductListComponent implements OnInit {
 
     // if we have a different keyword than previous
     // then set thePageNumber to 1
-
+ 
     if (this.previousKeyword != theKeyword) {
       this.thePageNumber = 1;
     }
