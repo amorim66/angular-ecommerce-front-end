@@ -3118,6 +3118,23 @@ footer {
   background-color: #000 !important;
 }
 
+.high-contrast .white-logo {
+  filter: brightness(0) invert(1);
+}
+.high-contrast .header-social-container .social-link{
+  background-color: #252525;
+}
+
+.btn-login{
+  background-color: #400042 !important;
+  border-color: #40004200 !important;
+  transition: 0.5s;
+}
+.btn-login:hover{
+  background-color: #8d0392 !important;
+  transition: 0.5s;
+}
+
 /*Fomulários*/
 .form-control{
   width: 500px !important;

@@ -17,6 +17,11 @@ export class CartDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.listCartDetails();
+    // Obter o elemento HTML que contém os resultados da pesquisa
+    const searchResults = document.getElementById('main-content');
+
+    // Rolar suavemente até o elemento dos resultados da pesquisa
+    searchResults!.scrollIntoView({ behavior: 'smooth' });
   }
 
   listCartDetails(){
