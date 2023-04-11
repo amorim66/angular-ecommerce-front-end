@@ -38,6 +38,7 @@ import { OktaAuth } from '@okta/okta-auth-js';
 import myAppConfig from './config/my-app-config';
 
 import { MembersPageComponent } from './components/members-page/members-page.component';
+import { MobileResponsiveComponent } from './components/mobile-responsive/mobile-responsive.component';
 
 
 const oktaConfig = myAppConfig.oidc;
@@ -84,7 +85,8 @@ const routes: Routes = [
     CartDetailsComponent,
     CheckoutComponent,
     LoginComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    MobileResponsiveComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

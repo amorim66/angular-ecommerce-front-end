@@ -39,6 +39,14 @@ export class AppComponent {
       }
     );
   }
+
+  goToProcucts(){
+    // Obter o elemento HTML que contém os resultados da pesquisa
+    const mainProducts = document.getElementById('product-main');
+
+    // Rolar suavemente até o elemento dos resultados da pesquisa
+    mainProducts!.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 

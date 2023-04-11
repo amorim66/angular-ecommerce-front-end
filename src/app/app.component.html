@@ -46,7 +46,7 @@
       <div class="container">
 
         <a href="#" class="header-logo">
-          <img src="./assets/images/logo/Cupkat.svg" class="white-logo" alt="Anon's logo" width="140" height="90">
+          <img src="./assets/images/logo/Cupkat.svg" class="white-logo" alt="Logo da Cupkat com fonte preta e detalhes em branco" width="140" height="90">
         </a>
 
         <!--SEARCH-->
@@ -70,29 +70,7 @@
     </div>
 
     
-    <div class="mobile-bottom-navigation">
-
-      
-      <button class="action-btn">
-        <ion-icon name="bag-handle-outline"></ion-icon>
-        <span class="count">0</span>
-      </button>
-
-      <button class="action-btn">
-        <ion-icon name="home-outline"></ion-icon>
-      </button>
-
-      <button class="action-btn">
-        <ion-icon name="heart-outline"></ion-icon>
-
-        <span class="count">0</span>
-      </button>
-
-      <button class="action-btn" data-mobile-menu-open-btn>
-        <ion-icon name="grid-outline"></ion-icon>
-      </button>
-
-    </div>
+    <app-mobile-responsive></app-mobile-responsive>
 
   </header>
 
@@ -115,19 +93,19 @@
 
           <div class="slider-item">
 
-            <img src="./assets/images/banner-1.jpg" alt="women's latest fashion sale" class="banner-img">
+            <img src="./assets/images/banner-1.jpg" alt="banner com diferentes colagens á direita: um prédio, um coração de papel, uma rosa vermelha, uma borboleta de jornal e um sol no canto superior direito." class="banner-img">
 
             <div class="banner-content">
 
-              <p class="banner-subtitle">Trending item</p>
+              <p class="banner-subtitle">Cupkat:</p>
 
-              <h2 class="banner-title">Women's latest fashion sale</h2>
+              <h2 class="banner-title">"Personalize o seu mundo com estilo."</h2>
 
               <p class="banner-text">
-                starting at &dollar; <b>20</b>.00
+                Conheça nossos artigos personalizados
               </p>
 
-              <a href="#" class="banner-btn">Shop now</a>
+              <button (click)="goToProcucts()" class="banner-btn">Shop now</button>
 
             </div>
 
@@ -135,19 +113,19 @@
 
           <div class="slider-item">
 
-            <img src="./assets/images/banner-2.jpg" alt="modern sunglasses" class="banner-img">
+            <img src="./assets/images/banner-2.jpg" alt="banner com diferentes colagens, um desenho do corpo de um gato a esquerda, e a cabeça de um gato á direita. Mostra também livros de capa amarela no centro com os respectivos títulos: Crash Course in Python, Beacome a Guru JavaScript e Exploring Vue.js." class="banner-img">
 
             <div class="banner-content">
 
-              <p class="banner-subtitle">Trending accessories</p>
+              <p class="banner-subtitle">Conhecimento:</p>
 
-              <h2 class="banner-title">Modern sunglasses</h2>
+              <h2 class="banner-title">Leia<br>e Aprenda</h2>
 
               <p class="banner-text">
-                starting at &dollar; <b>15</b>.00
+                por até R$<b> 14</b>,99
               </p>
 
-              <a href="#" class="banner-btn">Shop now</a>
+              <button (click)="goToProcucts()" class="banner-btn">Shop now</button>
 
             </div>
 
@@ -155,19 +133,19 @@
 
           <div class="slider-item">
 
-            <img src="./assets/images/banner-3.jpg" alt="new fashion summer sale" class="banner-img">
+            <img src="./assets/images/banner-3.jpg" alt="banner com diferentes colagens á direita e uma pessoa vestida com um produto da Cupkat, uma camisa branca com a ilustração de um gato vestido de bruxo" class="banner-img">
 
             <div class="banner-content">
 
-              <p class="banner-subtitle">Sale Offer</p>
+              <p class="banner-subtitle">Conheça:</p>
 
-              <h2 class="banner-title">New fashion summer sale</h2>
+              <h2 class="banner-title2">Produtos personalizados com a sua cara.</h2>
 
               <p class="banner-text">
-                starting at &dollar; <b>29</b>.99
+                camisas por até R$<b> 29</b>,99
               </p>
 
-              <a href="#" class="banner-btn">Shop now</a>
+              <button (click)="goToProcucts()" class="banner-btn">Shop now</button>
 
             </div>
 
@@ -543,17 +521,16 @@
 
             <div class="testimonial-card">
 
-              <img src="./assets/images/testimonial-1.jpg" alt="alan doe" class="testimonial-banner" width="80" height="80">
+              <img src="./assets/images/testimonial-1.png" alt="Foto da criadora da Cupkat, Danielle Sanches." class="testimonial-banner" width="80" height="80">
 
-              <p class="testimonial-name">Alan Doe</p>
+              <p class="testimonial-name">Danielle Sanches</p>
 
-              <p class="testimonial-title">CEO & Founder Invision</p>
+              <p class="testimonial-title">Criadora da Cupkat</p>
 
               <img src="./assets/images/icons/quotes.svg" alt="quotation" class="quotation-img" width="26">
 
               <p class="testimonial-desc">
-                Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                dolor dolor sit amet.
+                Meu objetivo é transformar suas compras online em uma experiência extraordinária!
               </p>
 
             </div>
@@ -568,7 +545,7 @@
 
           <div class="cta-container">
 
-            <img src="./assets/images/cta-banner.jpg" alt="summer collection" class="cta-banner">
+            <img src="./assets/images/cta-banner.jpg" alt="banner artístico com um vestido rosa e detalhes circulares." class="cta-banner">
 
             <a href="#" class="cta-content">
 
@@ -760,7 +737,7 @@
               <ion-icon name="logo-instagram"></ion-icon>
             </div>
   
-            <a href="https://www.facebook.com/cupkat.trk/" class="footer-nav-link">CupKat Trinkets</a>
+            <a href="https://www.instagram.com/cupkat.trk/?igshid=YmMyMTA2M2Y%3D" class="footer-nav-link">@cupkat.trk</a>
           </li>
 
         </ul>
@@ -771,7 +748,7 @@
         <ul class="footer-nav-list">
 
           <li class="footer-nav-item">
-            <h2 class="nav-title">Follow Us</h2>
+            <h2 class="nav-title">Siga-nos</h2>
           </li>
 
           <li>

@@ -867,6 +867,13 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   line-height: 1;
   margin-bottom: 10px;
 }
+.banner-title2{
+  color: var(--eerie-black);
+  font-size: 25pt;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 10px;
+}
 
 .banner-text { display: none; }
 
@@ -885,9 +892,10 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   -webkit-transition: var(--transition-timing);
   -o-transition: var(--transition-timing);
   transition: var(--transition-timing);
+  
 }
 
-.banner-btn:hover { background: var(--eerie-black); }
+.banner-btn:hover { background: var(--eerie-black); text-decoration: none; }
 
 
 
@@ -2077,7 +2085,7 @@ footer {
   transition: var(--transition-timing);
 }
 
-.footer-nav-link:hover { color: var(--salmon-pink); }
+.footer-nav-link:hover { color: white; }
 
 .footer-nav-item.flex {
   display: -webkit-box;
