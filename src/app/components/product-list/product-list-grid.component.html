@@ -8,9 +8,9 @@
 
             <div class="showcase-banner">
                 <a routerLink="/products/{{ tempProduct.id }}">
-                    <img src="{{ tempProduct.imageUrl }}" alt="Mens Winter Leathers Jackets" width="300"
-                        class="product-img default">
-                    <img src="{{ tempProduct.imageUrl }}" alt="Mens Winter Leathers Jackets" width="300"
+                    <img src="{{ tempProduct.imageUrl }}" width="300"
+                        class="product-img default" alt="{{ tempProduct.alt }}">
+                    <img src="{{ tempProduct.imageUrl }}" alt="{{ tempProduct.alt }}" width="300"
                         class="product-img hover">
                 </a>
                 <!--Feature de desconto-->
