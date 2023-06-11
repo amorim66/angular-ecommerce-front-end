@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Purchase } from '../common/purchase';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class CheckoutService {
 
-  private purchaseUrl = 'http://localhost:8080/api/checkout/purchase';
+  private purchaseUrl = environment.cupkatApiUrl + '/checkout/purchase';
 
 
   constructor(private httpClient: HttpClient) { }
