@@ -5,7 +5,7 @@ import { CargarScriptsService } from './cargar-scripts.service';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
@@ -40,6 +40,7 @@ import myAppConfig from './config/my-app-config';
 import { MembersPageComponent } from './components/members-page/members-page.component';
 import { MobileResponsiveComponent } from './components/mobile-responsive/mobile-responsive.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 const oktaConfig = myAppConfig.oidc;
@@ -102,7 +103,7 @@ const routes: Routes = [
     NgxMaskModule.forRoot(),
     OktaAuthModule
   ],
-  providers: [ProductService,  { provide: LOCALE_ID, useValue: 'pt' }, CargarScriptsService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}],
+  providers: [ProductService,  { provide: LOCALE_ID, useValue: 'pt' }, CargarScriptsService, { provide: OKTA_CONFIG, useValue: {oktaAuth}}, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
