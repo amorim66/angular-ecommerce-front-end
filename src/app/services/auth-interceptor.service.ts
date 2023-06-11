@@ -18,7 +18,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
     
     // Only add an access token for secured endpoints
-    const securedEndpoints = ['http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/orders'];
+    const securedEndpoints = ['http://localhost:8080/api/orders'];
 
     if (securedEndpoints.some(url => request.urlWithParams.includes(url))) {
       
@@ -28,7 +28,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       //clone the request and add new header with access token
       request = request.clone({
         setHeaders: {
-          Authorization: 'Bearer' + accessToken
+          Authorization: 'Bearer ' + accessToken
         }
       });
     }

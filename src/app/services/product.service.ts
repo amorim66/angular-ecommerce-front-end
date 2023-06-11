@@ -9,9 +9,9 @@ import { ProductCategory } from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/products';
+  private baseUrl = 'http://localhost:8080/api/products';
 
-  private categoryUrl = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/product-category';
+  private categoryUrl = 'http://localhost:8080/api/product-category';
 
   constructor(private httpClient: HttpClient) { }
 
