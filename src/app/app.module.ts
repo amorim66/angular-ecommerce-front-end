@@ -39,6 +39,7 @@ import myAppConfig from './config/my-app-config';
 
 import { MembersPageComponent } from './components/members-page/members-page.component';
 import { MobileResponsiveComponent } from './components/mobile-responsive/mobile-responsive.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
 
 const oktaConfig = myAppConfig.oidc;
@@ -57,6 +58,8 @@ function sendToLoginPage(oktaAuth: OktaAuth, injector: Injector){
 }
 
 const routes: Routes = [
+  {path: 'order-history', component: OrderHistoryComponent, canActivate: [OktaAuthGuard],
+                    data: {onAuthRequired: sendToLoginPage} },
   {path: 'members', component: MembersPageComponent, canActivate: [OktaAuthGuard],
                     data: {onAuthRequired: sendToLoginPage} },
 
@@ -86,7 +89,8 @@ const routes: Routes = [
     CheckoutComponent,
     LoginComponent,
     LoginStatusComponent,
-    MobileResponsiveComponent
+    MobileResponsiveComponent,
+    OrderHistoryComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
