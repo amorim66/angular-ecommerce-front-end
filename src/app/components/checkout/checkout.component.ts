@@ -11,6 +11,8 @@ import { CheckoutService } from 'src/app/services/checkout.service';
 import { ShopFormServiceService } from 'src/app/services/shop-form-service.service';
 import { CupKatValidators } from 'src/app/validators/cup-kat-validators';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.qa';
+import { PaymentInfo } from 'src/app/common/payment-info';
 
 @Component({
   selector: 'app-checkout',
@@ -34,6 +36,15 @@ export class CheckoutComponent implements OnInit {
 
   storage: Storage = sessionStorage;
 
+  // initialize Stripe API
+  stripe = Stripe("pk_test_51NHyzZBM6f6lMdVSvQnRGcX089dZRL1AF3BQl6udzXXx0N5e8YXcfTECZQ9NQbh1QDFMshfXTRZOzN8l2uzv30je009FKLeslv");
+
+  paymentInfo: PaymentInfo = new PaymentInfo();
+  cardElement: any;
+  displayError: any = "";
+
+  isDisabled: boolean = false;
+
   constructor(private formBuilder: FormBuilder,
     private shopFormService: ShopFormServiceService,
     private cartService: CartService,
@@ -43,11 +54,14 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // setup Stripe payment form
+    this.setupStripePaymentForm();
+
     this.reviewCartDetails();
 
     // read the user's email address from browser storage
     const theEmail = JSON.parse(this.storage.getItem('userEmail') || '{}');
-
+    
 
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
@@ -92,6 +106,7 @@ export class CheckoutComponent implements OnInit {
           CupKatValidators.notOnlyWhitespace])
       }),
       creditCard: this.formBuilder.group({
+        /*
         cardType: new FormControl('', [Validators.required]),
         nameOnCard: new FormControl('', [Validators.required, Validators.minLength(2),
           CupKatValidators.notOnlyWhitespace]),
@@ -99,9 +114,11 @@ export class CheckoutComponent implements OnInit {
         securityCode: new FormControl('', [Validators.required,Validators.pattern('[0-9]{3}')]),
         expirationMonth: [''],
         expirationYear: [''],
+        */
       }),
     });
-
+    
+    /*
     // ppulate credit cart months
 
     const startMonth: number = new Date().getMonth() + 1;
@@ -121,7 +138,7 @@ export class CheckoutComponent implements OnInit {
         console.log("Retrieved credit card years: " + JSON.stringify(data));
         this.creditCardYears = data;
       }
-    );
+    );*/
 
     // Adiciona evento de mudança no campo de CEP
     this.shippingAddressZipCode!.valueChanges.subscribe((value: string) => {
@@ -138,6 +155,32 @@ export class CheckoutComponent implements OnInit {
       }
     });
 
+  }
+  setupStripePaymentForm() {
+    
+    // get a handle to stripe elements
+    var elements = this.stripe.elements();
+
+    // create a  card element
+    this.cardElement = elements.create('card', { hidePostalCode: true});
+
+    // add an instance of card UI component into the 'card-element' div
+    this.cardElement.mount('#card-element');
+
+    // add event binding for the 'change' event on the card element
+    this.cardElement.on('change', (event: any) => {
+      
+      // get a handle to card-errors element
+      this.displayError = document.getElementById('card-errors');
+
+      if (event.complete) {
+        this.displayError.textContent = "";
+      } else if (event.error) {
+        //show validation error to customer
+        this.displayError.textContent = event.error.message;
+      }
+
+    })
   }
 
   // Função para consultar CEP e preencher campos do formulário
@@ -267,21 +310,66 @@ export class CheckoutComponent implements OnInit {
     purchase.order = order;
     purchase.orderItems = orderItems;
 
-    // call REST API via the CheckoutService
-    this.checkoutService.placeOrder(purchase).subscribe(
-      {
-        next: response => {
-          alert(`Seu pedido foi recebido.\nOrder tracking number: ${response.orderTrackingNumber}`)
+    // compute payment info
+    this.paymentInfo.amount = Math.round(this.totalPrice * 100);
+    this.paymentInfo.currency ="BRL";
+    this.paymentInfo.receiptEmail = purchase.customer?.email;
+    //if valid form then
+    // - create payment intent
+    // - confirm card payment
+    // - place order
 
-          // reset cart
-          this.resetCart();
+    if (!this.checkoutFormGroup.invalid && this.displayError.textContent === ""){
+      
+      this.isDisabled = true;
 
-        },
-        error: err =>{
-          alert(`There was an error: ${err.message}`);
+      this.checkoutService.createPaymentIntent(this.paymentInfo).subscribe(
+        (paymentIntentResponse) => {
+          this.stripe.confirmCardPayment(paymentIntentResponse.client_secret,
+          {
+            payment_method: {
+              card: this.cardElement,
+              billing_details: {
+                email: purchase.customer?.email,
+                name: `${purchase.customer?.firstName} ${purchase.customer?.lastName}`,
+                address: {
+                  line1: purchase.billingAddress?.street,
+                  city: purchase.billingAddress?.city,
+                  state: purchase.billingAddress?.state,
+                  postal_code: purchase.billingAddress?.zipCode,
+                  country: this.billingAddressZipCountry?.value.code,
+                }
+              }
+            }
+          }, { handlerActions: false })
+          .then((result: any) => {
+            if (result.error) {
+              // inform the customer there was an error
+              alert(`There was an error: ${result.error.message}`);
+              this.isDisabled = false;
+            } else {
+              // call REST API via the CheckoutService
+              this.checkoutService.placeOrder(purchase).subscribe({
+                next: (response: any) => {
+                  alert(`Seu pedido foi recebido.\nNúmero de Identificação do Pedido: ${response.orderTrackingNumber}`);
+                  
+                  // reset cart
+                  this.resetCart();
+                  this.isDisabled = false;
+                },
+                error: (err: any) => {
+                  alert(`There wan an error: ${err.message}`);
+                  this.isDisabled = false;
+                }
+              })
+            }
+          });
         }
-      }
-    );
+      );
+    } else {
+      this.checkoutFormGroup.markAllAsTouched();
+      return;
+    }
 
     // console.log(this.checkoutFormGroup.get('customer')!.value);
     // console.log("The email address is " + this.checkoutFormGroup.get('customer')?.value.email);
@@ -296,6 +384,7 @@ export class CheckoutComponent implements OnInit {
     this.cartService.cartItems = [];
     this.cartService.totalPrice.next(0);
     this.cartService.totalQuantity.next(0);
+    this.cartService.persistCartItems();
 
     // rest the form
     this.checkoutFormGroup.reset();

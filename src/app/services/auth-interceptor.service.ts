@@ -19,7 +19,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
     
     // Only add an access token for secured endpoints
-    const theEndpoint = environment.cupkatApiUrl + '/orders';
+    const theEndpoint = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/orders';
     const securedEndpoints = [theEndpoint];
 
     if (securedEndpoints.some(url => request.urlWithParams.includes(url))) {

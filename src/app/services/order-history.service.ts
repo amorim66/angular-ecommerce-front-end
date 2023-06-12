@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class OrderHistoryService {
 
-  private orderUrl = environment.cupkatApiUrl + '/orders';
+  private orderUrl = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/orders';
 
   constructor(private httpClient: HttpClient) {}
 

@@ -10,9 +10,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl =  environment.cupkatApiUrl + '/products';
+  private baseUrl = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/products';
 
-  private categoryUrl = environment.cupkatApiUrl + '/product-category';
+  private categoryUrl = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/product-category';
 
   constructor(private httpClient: HttpClient) { }
 
