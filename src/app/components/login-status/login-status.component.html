@@ -5,6 +5,6 @@
 
     <button *ngIf="!isAuthenticated" routerLink="/login" class="btn btn-primary btn-login">Login</button>
     <button *ngIf="isAuthenticated" (click)="logout()" class="btn btn-secondary me-1">Logout</button>
-    <button *ngIf="isAuthenticated" routerLink="/members" class="btn btn-primary me-1">Membros</button>
-    <button *ngIf="isAuthenticated" routerLink="/order-history" class="btn btn-primary">Pedidos</button>
+    <button *ngIf="isAuthenticated" routerLink="/members" class="btn btn-primary me-1 btn-login">Membros</button>
+    <button *ngIf="isAuthenticated" routerLink="/order-history" class="btn btn-primary btn-login">Pedidos</button>
 

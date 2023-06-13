@@ -1,477 +1,229 @@
-  
-  <!--
+<!--
     - HEADER
   -->
-  <div class="overlay" data-overlay></div>
+<div class="overlay" data-overlay></div>
 
-  
-  <header>
 
-    <!--Barra de acessibilidade--> 
-    <div class="header-top">
+<header>
 
-      <div class="container">
+  <!--Barra de acessibilidade-->
+  <div class="header-top">
 
-        <ul class="header-social-container">
-          <li>
-            <div class="social-link" onclick="toggleHighContrast()">
-              <ion-icon name="contrast-outline"></ion-icon>
-            </div>
-          </li>
-          <li>
-            <button class="social-link" (click)="increaseFontSize()">
-              + A
-            </button>
-          </li>
-          <li>
-            <button class="social-link" (click)="decreaseFontSize()">
-              - A
-            </button>
-          </li>
+    <div class="container">
 
-        </ul>
-
-        <div class="header-alert-news">
-          <a href="#conteudo" accesskey="1" title="Ir para a área de conteúdo" onclick="scrollToSection(event, 'conteudo')">Ir para o conteúdo [1]</a>
-          <a href="#header-main" accesskey="2" title="Ir para o menu de navegação" onclick="scrollToSection(event, 'header-main')">Ir para o menu [2]</a>
-          <a href="#footer" accesskey="3" title="Ir para o rodapé" onclick="scrollToSection(event, 'footer')">Ir para o rodapé [3]</a>
-        </div>
-      </div>
-
-    </div>
-    <!--Fim da Barra de acessibilidade--> 
-
-    <div class="header-main" id="header-main">
-
-      <div class="container">
-
-        <a href="#" class="header-logo">
-          <img src="./assets/images/logo/Cupkat.svg" class="white-logo" alt="Logo da Cupkat com fonte preta e detalhes em branco" width="140" height="90">
-        </a>
-
-        <!--SEARCH-->
-        <app-search class="header-search-container"></app-search>
-
-        <div class="header-user-actions">
-
-          <button class="action-btn">
-            <ion-icon name="person-outline"></ion-icon>
+      <ul class="header-social-container">
+        <li>
+          <div class="social-link" onclick="toggleHighContrast()">
+            <ion-icon name="contrast-outline"></ion-icon>
+          </div>
+        </li>
+        <li>
+          <button class="social-link" (click)="increaseFontSize()">
+            + A
           </button>
+        </li>
+        <li>
+          <button class="social-link" (click)="decreaseFontSize()">
+            - A
+          </button>
+        </li>
 
-          <app-login-status></app-login-status>
-        
-          <!--CART STATUS-->
-          <app-cart-status></app-cart-status>
+      </ul>
 
-        </div>
+      <div class="header-alert-news">
+        <a href="#conteudo" accesskey="1" title="Ir para a área de conteúdo"
+          onclick="scrollToSection(event, 'conteudo')">Ir para o conteúdo [1]</a>
+        <a href="#header-main" accesskey="2" title="Ir para o menu de navegação"
+          onclick="scrollToSection(event, 'header-main')">Ir para o menu [2]</a>
+        <a href="#footer" accesskey="3" title="Ir para o rodapé" onclick="scrollToSection(event, 'footer')">Ir para o
+          rodapé [3]</a>
+      </div>
+    </div>
+
+  </div>
+  <!--Fim da Barra de acessibilidade-->
+
+  <div class="header-main" id="header-main">
+
+    <div class="container">
+
+      <a href="#" class="header-logo">
+        <img src="./assets/images/logo/Cupkat.svg" class="white-logo"
+          alt="Logo da Cupkat com fonte preta e detalhes em branco" width="140" height="90">
+      </a>
+
+      <!--SEARCH-->
+      <app-search class="header-search-container"></app-search>
+
+      <div class="header-user-actions">
+
+        <button class="action-btn">
+          <ion-icon name="person-outline"></ion-icon>
+        </button>
+
+        <app-login-status></app-login-status>
+
+        <!--CART STATUS-->
+        <app-cart-status></app-cart-status>
 
       </div>
 
     </div>
 
-    
-    <app-mobile-responsive></app-mobile-responsive>
-
-  </header>
+  </div>
 
 
+  <app-mobile-responsive></app-mobile-responsive>
+
+</header>
 
 
 
-  <!--
+
+
+<!--
     - MAIN
   -->
 
-  <main id="conteudo">
-    
+<main id="conteudo">
 
-    <div class="banner">
 
-      <div class="container">
-
-        <div class="slider-container has-scrollbar">
-
-          <div class="slider-item">
-
-            <img src="./assets/images/banner-1.jpg" alt="banner com diferentes colagens á direita: um prédio, um coração de papel, uma rosa vermelha, uma borboleta de jornal e um sol no canto superior direito." class="banner-img">
-
-            <div class="banner-content">
-
-              <p class="banner-subtitle">Cupkat:</p>
-
-              <h2 class="banner-title">"Personalize o seu mundo com estilo."</h2>
-
-              <p class="banner-text">
-                Conheça nossos artigos personalizados
-              </p>
-
-              <button (click)="goToProcucts()" class="banner-btn">Shop now</button>
-
-            </div>
-
-          </div>
-
-          <div class="slider-item">
-
-            <img src="./assets/images/banner-2.jpg" alt="banner com diferentes colagens, um desenho do corpo de um gato a esquerda, e a cabeça de um gato á direita. Mostra também livros de capa amarela no centro com os respectivos títulos: Crash Course in Python, Beacome a Guru JavaScript e Exploring Vue.js." class="banner-img">
-
-            <div class="banner-content">
-
-              <p class="banner-subtitle">Conhecimento:</p>
-
-              <h2 class="banner-title">Leia<br>e Aprenda</h2>
-
-              <p class="banner-text">
-                por até R$<b> 14</b>,99
-              </p>
-
-              <button (click)="goToProcucts()" class="banner-btn">Shop now</button>
-
-            </div>
-
-          </div>
-
-          <div class="slider-item">
-
-            <img src="./assets/images/banner-3.jpg" alt="banner com diferentes colagens á direita e uma pessoa vestida com um produto da Cupkat, uma camisa branca com a ilustração de um gato vestido de bruxo" class="banner-img">
-
-            <div class="banner-content">
-
-              <p class="banner-subtitle">Conheça:</p>
-
-              <h2 class="banner-title2">Produtos personalizados com a sua cara.</h2>
-
-              <p class="banner-text">
-                camisas por até R$<b> 29</b>,99
-              </p>
-
-              <button (click)="goToProcucts()" class="banner-btn">Shop now</button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!--
-      - CATEGORY
-    -->
-
-    <div class="category">
-
-      <div class="container">
-
-        <div class="category-item-container has-scrollbar">
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/dress.svg" alt="dress & frock" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Dress & frock</h3>
-
-                <p class="category-item-amount">(53)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/coat.svg" alt="winter wear" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Winter wear</h3>
-
-                <p class="category-item-amount">(58)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/glasses.svg" alt="glasses & lens" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Glasses & lens</h3>
-
-                <p class="category-item-amount">(68)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/shorts.svg" alt="shorts & jeans" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Shorts & jeans</h3>
-
-                <p class="category-item-amount">(84)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/tee.svg" alt="t-shirts" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">T-shirts</h3>
-
-                <p class="category-item-amount">(35)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/jacket.svg" alt="jacket" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Jacket</h3>
-
-                <p class="category-item-amount">(16)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/watch.svg" alt="watch" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Watch</h3>
-
-                <p class="category-item-amount">(27)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-          <div class="category-item">
-
-            <div class="category-img-box">
-              <img src="./assets/images/icons/hat.svg" alt="hat & caps" width="30">
-            </div>
-
-            <div class="category-content-box">
-
-              <div class="category-content-flex">
-                <h3 class="category-item-title">Hat & caps</h3>
-
-                <p class="category-item-amount">(39)</p>
-              </div>
-
-              <a href="#" class="category-btn">Show all</a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!--
+  <!--
       - PRODUCT
     -->
 
-    <div class="product-container">
+  <div class="product-container">
 
-      <div class="container">
+    <div class="container">
 
 
-        <!--
+      <!--
           - SIDEBAR
         -->
 
-        <div class="sidebar  has-scrollbar" data-mobile-menu>
+      <div class="sidebar  has-scrollbar" data-mobile-menu>
 
-          <app-product-category-menu></app-product-category-menu>
+        <app-product-category-menu></app-product-category-menu>
 
-          <div class="product-showcase">
+        <div class="product-showcase">
 
-            <h3 class="showcase-heading">Mais vendidos</h3>
+          <h3 class="showcase-heading">Mais vendidos</h3>
 
-            <div class="showcase-wrapper">
+          <div class="showcase-wrapper">
 
-              <div class="showcase-container">
+            <div class="showcase-container">
 
-                <div class="showcase">
+              <div class="showcase">
 
-                  <a href="#" class="showcase-img-box">
-                    <img src="./assets/images/products/1.jpg" alt="baby fabric shoes" width="75" height="75"
-                      class="showcase-img">
+                <a href="#" class="showcase-img-box">
+                  <img src="./assets/images/products/1.jpg" alt="baby fabric shoes" width="75" height="75"
+                    class="showcase-img">
+                </a>
+
+                <div class="showcase-content">
+
+                  <a href="#">
+                    <h4 class="showcase-title">baby fabric shoes</h4>
                   </a>
 
-                  <div class="showcase-content">
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
 
-                    <a href="#">
-                      <h4 class="showcase-title">baby fabric shoes</h4>
-                    </a>
-
-                    <div class="showcase-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <div class="price-box">
-                      <del>R$125,00</del>
-                      <p class="price">R$95,00</p>
-                    </div>
-
+                  <div class="price-box">
+                    <del>R$125,00</del>
+                    <p class="price">R$95,00</p>
                   </div>
 
                 </div>
 
-                <div class="showcase">
+              </div>
 
-                  <a href="#" class="showcase-img-box">
-                    <img src="./assets/images/products/2.jpg" alt="men's hoodies t-shirt" class="showcase-img"
-                      width="75" height="75">
+              <div class="showcase">
+
+                <a href="#" class="showcase-img-box">
+                  <img src="./assets/images/products/2.jpg" alt="men's hoodies t-shirt" class="showcase-img" width="75"
+                    height="75">
+                </a>
+
+                <div class="showcase-content">
+
+                  <a href="#">
+                    <h4 class="showcase-title">men's hoodies t-shirt</h4>
                   </a>
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-half-outline"></ion-icon>
+                  </div>
 
-                  <div class="showcase-content">
-
-                    <a href="#">
-                      <h4 class="showcase-title">men's hoodies t-shirt</h4>
-                    </a>
-                    <div class="showcase-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star-half-outline"></ion-icon>
-                    </div>
-
-                    <div class="price-box">
-                      <del>R$175.00</del>
-                      <p class="price">R$90,00</p>
-                    </div>
-
+                  <div class="price-box">
+                    <del>R$175.00</del>
+                    <p class="price">R$90,00</p>
                   </div>
 
                 </div>
 
-                <div class="showcase">
+              </div>
 
-                  <a href="#" class="showcase-img-box">
-                    <img src="./assets/images/products/3.jpg" alt="girls t-shirt" class="showcase-img" width="75"
-                      height="75">
+              <div class="showcase">
+
+                <a href="#" class="showcase-img-box">
+                  <img src="./assets/images/products/3.jpg" alt="girls t-shirt" class="showcase-img" width="75"
+                    height="75">
+                </a>
+
+                <div class="showcase-content">
+
+                  <a href="#">
+                    <h4 class="showcase-title">girls t-shirt</h4>
                   </a>
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-half-outline"></ion-icon>
+                  </div>
 
-                  <div class="showcase-content">
-
-                    <a href="#">
-                      <h4 class="showcase-title">girls t-shirt</h4>
-                    </a>
-                    <div class="showcase-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star-half-outline"></ion-icon>
-                    </div>
-
-                    <div class="price-box">
-                      <del>$135,00</del>
-                      <p class="price">R$99,99</p>
-                    </div>
-
+                  <div class="price-box">
+                    <del>$135,00</del>
+                    <p class="price">R$99,99</p>
                   </div>
 
                 </div>
 
-                <div class="showcase">
+              </div>
 
-                  <a href="#" class="showcase-img-box">
-                    <img src="./assets/images/products/4.jpg" alt="woolen hat for men" class="showcase-img" width="75"
-                      height="75">
+              <div class="showcase">
+
+                <a href="#" class="showcase-img-box">
+                  <img src="./assets/images/products/4.jpg" alt="woolen hat for men" class="showcase-img" width="75"
+                    height="75">
+                </a>
+
+                <div class="showcase-content">
+
+                  <a href="#">
+                    <h4 class="showcase-title">woolen hat for men</h4>
                   </a>
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
 
-                  <div class="showcase-content">
-
-                    <a href="#">
-                      <h4 class="showcase-title">woolen hat for men</h4>
-                    </a>
-                    <div class="showcase-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-
-                    <div class="price-box">
-                      <del>R$70,00</del>
-                      <p class="price">R$55.00</p>
-                    </div>
-
+                  <div class="price-box">
+                    <del>R$70,00</del>
+                    <p class="price">R$55.00</p>
                   </div>
 
                 </div>
@@ -484,325 +236,329 @@
 
         </div>
 
-
-
-
-          <!--
-            - PRODUCT GRID
-          -->
-
-          <router-outlet></router-outlet>
-
-        </div>
-
       </div>
 
 
 
 
+      <!--
+            - PRODUCT GRID
+          -->
 
-    <!--
+      <router-outlet></router-outlet>
+
+    </div>
+
+  </div>
+
+
+
+
+
+  <!--
       - TESTIMONIALS, CTA & SERVICE
     -->
 
-    <div>
+  <div>
 
-      <div class="container">
+    <div class="container">
 
-        <div class="testimonials-box">
+      <div class="testimonials-box">
 
-          <!--
+        <!--
             - TESTIMONIALS
           -->
 
-          <div class="testimonial">
+        <div class="testimonial">
 
-            <h2 class="title"  id="teste">Nossa Missão</h2>
+          <h2 class="title" id="teste">Nossa Missão</h2>
 
-            <div class="testimonial-card">
+          <div class="testimonial-card">
 
-              <img src="./assets/images/testimonial-1.png" alt="Foto da criadora da Cupkat, Danielle Sanches." class="testimonial-banner" width="80" height="80">
+            <img src="./assets/images/testimonial-1.png" alt="Foto da criadora da Cupkat, Danielle Sanches."
+              class="testimonial-banner" width="80" height="80">
 
-              <p class="testimonial-name">Danielle Sanches</p>
+            <p class="testimonial-name">Danielle Sanches</p>
 
-              <p class="testimonial-title">Criadora da Cupkat</p>
+            <p class="testimonial-title">Criadora da Cupkat</p>
 
-              <img src="./assets/images/icons/quotes.svg" alt="quotation" class="quotation-img" width="26">
+            <img src="./assets/images/icons/quotes.svg" alt="quotation" class="quotation-img" width="26">
 
-              <p class="testimonial-desc">
-                Meu objetivo é transformar suas compras online em uma experiência extraordinária!
-              </p>
-
-            </div>
+            <p class="testimonial-desc">
+              Meu objetivo é transformar suas compras online em uma experiência extraordinária!
+            </p>
 
           </div>
 
+        </div>
 
 
-          <!--
+
+        <!--
             - CTA
           -->
 
-          <div class="cta-container">
+        <div class="cta-container">
 
-            <img src="./assets/images/cta-banner.jpg" alt="banner artístico com um vestido rosa e detalhes circulares." class="cta-banner">
+          <img src="./assets/images/cta-banner.jpg" alt="banner artístico com um vestido rosa e detalhes circulares."
+            class="cta-banner">
 
-            <a href="#" class="cta-content">
+          <a href="#" class="cta-content">
 
-              <p class="discount">25% Desconto</p>
+            <p class="discount">25% Desconto</p>
 
-              <h2 class="cta-title">Cupkat Trincket</h2>
+            <h2 class="cta-title">Cupkat Trincket</h2>
 
-              <p class="cta-text">Comece com R$10</p>
+            <p class="cta-text">Comece com R$10</p>
 
-              <button class="cta-btn">Conheça nossos produtos</button>
+            <button class="cta-btn">Conheça nossos produtos</button>
+
+          </a>
+
+        </div>
+
+
+
+        <!--
+            - SERVICE
+          -->
+
+        <div class="service">
+
+          <h2 class="title">Nossos Serviços</h2>
+
+          <div class="service-container">
+
+            <a href="#" class="service-item">
+
+              <div class="service-icon">
+                <ion-icon name="boat-outline"></ion-icon>
+              </div>
+
+              <div class="service-content">
+
+                <h3 class="service-title">Entrega em todo o Brasil</h3>
+                <p class="service-desc">Para pedidos acima de R$100</p>
+
+              </div>
+
+            </a>
+
+            <a href="#" class="service-item">
+
+              <div class="service-icon">
+                <ion-icon name="rocket-outline"></ion-icon>
+              </div>
+
+              <div class="service-content">
+
+                <h3 class="service-title">Entrega expressa</h3>
+                <p class="service-desc">Para pedidos em algumas regiões do Brasil</p>
+
+              </div>
+
+            </a>
+
+            <a href="#" class="service-item">
+
+              <div class="service-icon">
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+
+              <div class="service-content">
+
+                <h3 class="service-title">Melhor suporte online</h3>
+                <p class="service-desc">Horário: 8h às 23h</p>
+
+              </div>
+
+            </a>
+
+            <a href="#" class="service-item">
+
+              <div class="service-icon">
+                <ion-icon name="arrow-undo-outline"></ion-icon>
+              </div>
+
+              <div class="service-content">
+
+                <h3 class="service-title">Política de devolução</h3>
+                <p class="service-desc">Devolução fácil e gratuita</p>
+
+              </div>
+
+            </a>
+
+            <a href="#" class="service-item">
+
+              <div class="service-icon">
+                <ion-icon name="ticket-outline"></ion-icon>
+              </div>
+
+              <div class="service-content">
+
+                <h3 class="service-title">Cashback de 30%</h3>
+                <p class="service-desc">Para pedidos acima de R$100</p>
+
+              </div>
 
             </a>
 
           </div>
 
-
-
-          <!--
-            - SERVICE
-          -->
-
-          <div class="service">
-
-            <h2 class="title">Nossos Serviços</h2>
-
-            <div class="service-container">
-
-              <a href="#" class="service-item">
-
-                <div class="service-icon">
-                  <ion-icon name="boat-outline"></ion-icon>
-                </div>
-
-                <div class="service-content">
-
-                  <h3 class="service-title">Entrega em todo o Brasil</h3>
-                  <p class="service-desc">Para pedidos acima de R$100</p>
-
-                </div>
-
-              </a>
-
-              <a href="#" class="service-item">
-              
-                <div class="service-icon">
-                  <ion-icon name="rocket-outline"></ion-icon>
-                </div>
-              
-                <div class="service-content">
-              
-                  <h3 class="service-title">Entrega expressa</h3>
-                  <p class="service-desc">Para pedidos em algumas regiões do Brasil</p>
-              
-                </div>
-              
-              </a>
-
-              <a href="#" class="service-item">
-              
-                <div class="service-icon">
-                  <ion-icon name="call-outline"></ion-icon>
-                </div>
-              
-                <div class="service-content">
-              
-                  <h3 class="service-title">Melhor suporte online</h3>
-                  <p class="service-desc">Horário: 8h às 23h</p>
-              
-                </div>
-              
-              </a>
-
-              <a href="#" class="service-item">
-              
-                <div class="service-icon">
-                  <ion-icon name="arrow-undo-outline"></ion-icon>
-                </div>
-              
-                <div class="service-content">
-              
-                  <h3 class="service-title">Política de devolução</h3>
-                  <p class="service-desc">Devolução fácil e gratuita</p>
-              
-                </div>
-              
-              </a>
-
-              <a href="#" class="service-item">
-              
-                <div class="service-icon">
-                  <ion-icon name="ticket-outline"></ion-icon>
-                </div>
-              
-                <div class="service-content">
-              
-                  <h3 class="service-title">Cashback de 30%</h3>
-                  <p class="service-desc">Para pedidos acima de R$100</p>
-              
-                </div>
-              
-              </a>
-
-            </div>
-
-          </div>
-
         </div>
 
       </div>
 
     </div>
-    
-  </main>
+
+  </div>
+
+</main>
 
 
 
 
 
-  <!--
+<!--
     - FOOTER
   -->
 
-  <footer id="footer">
+<footer id="footer">
 
-    <div class="footer-nav">
+  <div class="footer-nav">
 
-      <div class="container">
+    <div class="container">
 
-        <ul class="footer-nav-list">
+      <ul class="footer-nav-list">
 
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Principais Itens</h2>
-          </li>
+        <li class="footer-nav-item">
+          <h2 class="nav-title">Principais Itens</h2>
+        </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Fashion</a>
-          </li>
+        <li class="footer-nav-item">
+          <a href="#" class="footer-nav-link">Fashion</a>
+        </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Electronic</a>
-          </li>
+        <li class="footer-nav-item">
+          <a href="#" class="footer-nav-link">Electronic</a>
+        </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Cosmetic</a>
-          </li>
+        <li class="footer-nav-item">
+          <a href="#" class="footer-nav-link">Cosmetic</a>
+        </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Health</a>
-          </li>
+        <li class="footer-nav-item">
+          <a href="#" class="footer-nav-link">Health</a>
+        </li>
 
-          <li class="footer-nav-item">
-            <a href="#" class="footer-nav-link">Watches</a>
-          </li>
+        <li class="footer-nav-item">
+          <a href="#" class="footer-nav-link">Watches</a>
+        </li>
 
-        </ul>
+      </ul>
 
-        <ul class="footer-nav-list">
+      <ul class="footer-nav-list">
 
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Contato</h2>
-          </li>
+        <li class="footer-nav-item">
+          <h2 class="nav-title">Contato</h2>
+        </li>
 
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="call-outline"></ion-icon>
-            </div>
+        <li class="footer-nav-item flex">
+          <div class="icon-box">
+            <ion-icon name="call-outline"></ion-icon>
+          </div>
 
-            <a href="tel:+607936-8058" class="footer-nav-link">(11) 98209-8739</a>
-          </li>
+          <a href="tel:+607936-8058" class="footer-nav-link">(11) 98209-8739</a>
+        </li>
 
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
+        <li class="footer-nav-item flex">
+          <div class="icon-box">
+            <ion-icon name="mail-outline"></ion-icon>
+          </div>
 
-            <a href="mailto:example@gmail.com" class="footer-nav-link">cupkat.trk@gmail.com</a>
-          </li>
+          <a href="mailto:example@gmail.com" class="footer-nav-link">cupkat.trk@gmail.com</a>
+        </li>
 
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="logo-facebook"></ion-icon>
-            </div>
+        <li class="footer-nav-item flex">
+          <div class="icon-box">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </div>
 
-            <a href="https://www.facebook.com/cupkat.trk/" class="footer-nav-link">CupKat Trinkets</a>
-          </li>
+          <a href="https://www.facebook.com/cupkat.trk/" class="footer-nav-link">CupKat Trinkets</a>
+        </li>
 
-          <li class="footer-nav-item flex">
-            <div class="icon-box">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </div>
-  
-            <a href="https://www.instagram.com/cupkat.trk/?igshid=YmMyMTA2M2Y%3D" class="footer-nav-link">@cupkat.trk</a>
-          </li>
+        <li class="footer-nav-item flex">
+          <div class="icon-box">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </div>
 
-        </ul>
+          <a href="https://www.instagram.com/cupkat.trk/?igshid=YmMyMTA2M2Y%3D" class="footer-nav-link">@cupkat.trk</a>
+        </li>
 
-        
-      
+      </ul>
 
-        <ul class="footer-nav-list">
 
-          <li class="footer-nav-item">
-            <h2 class="nav-title">Siga-nos</h2>
-          </li>
 
-          <li>
-            <ul class="social-link">
 
-              <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-              </li>
+      <ul class="footer-nav-list">
 
-              <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-              </li>
+        <li class="footer-nav-item">
+          <h2 class="nav-title">Siga-nos</h2>
+        </li>
 
-              <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                </a>
-              </li>
+        <li>
+          <ul class="social-link">
 
-              <li class="footer-nav-item">
-                <a href="#" class="footer-nav-link">
-                  <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-              </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
 
-            </ul>
-          </li>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
 
-        </ul>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
 
-      </div>
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
 
     </div>
 
-    <div class="footer-bottom">
+  </div>
 
-      <div class="container">
+  <div class="footer-bottom">
 
-        <img src="./assets/images/payment.png" alt="payment method" class="payment-img">
+    <div class="container">
 
-        <p class="copyright">
-          Copyright &copy; <a href="#">Cupkat</a> todos os direitos reservados.
-        </p>
+      <img src="./assets/images/payment.png" alt="payment method" class="payment-img">
 
-      </div>
+      <p class="copyright">
+        Copyright &copy; <a href="#">Cupkat</a> todos os direitos reservados.
+      </p>
 
     </div>
 
-  </footer>
+  </div>
 
-    <!--
+</footer>
+
+<!--
     - custom js link
   -->
