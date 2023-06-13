@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
 
   //new properties for pagination
   thePageNumber: number = 1;
-  thePageSize: number = 5;
+  thePageSize: number = 10;
   theTotalElements: number = 0;
 
   previousKeyword: string = "";
@@ -37,6 +37,13 @@ export class ProductListComponent implements OnInit {
       this.listProducts();
     });
     
+  }
+  goToProcucts(){
+    // Obter o elemento HTML que contém os resultados da pesquisa
+    const mainProducts = document.getElementById('product-main');
+
+    // Rolar suavemente até o elemento dos resultados da pesquisa
+    mainProducts!.scrollIntoView({ behavior: 'smooth' });
   }
 
 

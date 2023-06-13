@@ -11,10 +11,10 @@ import myAppConfig from '../../config/my-app-config';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   oktaSignin: any;
   
-  constructor(@Inject(OKTA_AUTH) private oktaAuth: OktaAuth){
+  constructor(@Inject(OKTA_AUTH) private oktaAuth: OktaAuth) {
 
     this.oktaSignin = new OktaSignIn({
       logo: 'assets/images/logo/Cupkat.svg',
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         issuer: myAppConfig.oidc.issuer,
         scopes: myAppConfig.oidc.scopes
       },
-      
+
     });
   }
 
@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
     this.oktaSignin.remove();
 
     this.oktaSignin.renderEl({
-      el: '#okta-sign-in-widget'}, // this name should be same as div tag id in login.component.html
+      el: '#okta-sign-in-widget'
+    }, // this name should be same as div tag id in login.component.html
       (response: any) => {
         if (response.status === 'SUCCESS') {
           this.oktaAuth.signInWithRedirect();
@@ -45,5 +46,5 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-  
+
 }

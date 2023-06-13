@@ -1,3 +1,78 @@
+<div class="banner">
+
+    <div class="container">
+
+      <div class="slider-container has-scrollbar">
+
+        <div class="slider-item">
+
+          <img src="./assets/images/banner-1.jpg"
+            alt="banner com diferentes colagens á direita: um prédio, um coração de papel, uma rosa vermelha, uma borboleta de jornal e um sol no canto superior direito."
+            class="banner-img">
+
+          <div class="banner-content">
+
+            <p class="banner-subtitle">Cupkat:</p>
+
+            <h2 class="banner-title">"Personalize o seu mundo com estilo."</h2>
+
+            <p class="banner-text">
+              Conheça nossos artigos personalizados
+            </p>
+
+            <button (click)="goToProcucts()" class="banner-btn">Produtos</button>
+
+          </div>
+
+        </div>
+
+        <div class="slider-item">
+
+          <img src="./assets/images/banner-2.1.jpg"
+            alt="banner com diferentes colagens, um desenho do corpo de um gato a esquerda, e a cabeça de um gato á direita. Mostra também livros de capa amarela no centro com os respectivos títulos: Crash Course in Python, Beacome a Guru JavaScript e Exploring Vue.js."
+            class="banner-img">
+
+          <div class="banner-content">
+
+            <p class="banner-subtitle">Conhecimento:</p>
+
+            <h2 class="banner-title">Leia<br>e Aprenda</h2>
+
+            <p class="banner-text">
+              por até R$<b> 14</b>,99
+            </p>
+
+            <button (click)="goToProcucts()" class="banner-btn">Conheça</button>
+
+          </div>
+
+        </div>
+
+        <div class="slider-item">
+
+          <img src="./assets/images/banner-3.1.jpg"
+            alt="banner com diferentes colagens á direita e uma pessoa vestida com um produto da Cupkat, uma camisa branca com a ilustração de um gato vestido de bruxo"
+            class="banner-img">
+
+          <div class="banner-content">
+
+            <p class="banner-subtitle">Conheça:</p>
+
+            <h2 class="banner-title2">Produtos personalizados com a sua cara.</h2>
+
+            <p class="banner-text">
+              camisas por até R$<b> 29</b>,99
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 <div class="product-main" id="product-main">
 
     <h2 class="title" *ngIf="searchMode != true">Novos Produtos</h2>
@@ -78,8 +153,8 @@
 
                         <select #myPageSelect (change)="updatePageSize(myPageSelect.value)">
                             <option>2</option>
-                            <option selected="true">5</option>
-                            <option>10</option>
+                            <option>5</option>
+                            <option selected="true">10</option>
                             <option>20</option>
                             <option>50</option>
                         </select>
