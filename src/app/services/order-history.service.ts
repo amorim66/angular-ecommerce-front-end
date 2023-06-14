@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class OrderHistoryService {
 
-  private orderUrl = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/orders';
+  private orderUrl = 'https://api.api-cupkat.com.br/api/orders';
 
   constructor(private httpClient: HttpClient) {}
 

@@ -10,9 +10,9 @@ import { Observable } from 'rxjs';
 
 export class CheckoutService {
 
-  private purchaseUrl = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/checkout/purchase';
+  private purchaseUrl = 'https://api.api-cupkat.com.br/api/checkout/purchase';
 
-  private paymentIntentUrl = 'http://apispringboot-env.eba-gqfpymtm.us-east-2.elasticbeanstalk.com/api/checkout/payment-intent';
+  private paymentIntentUrl = 'https://api.api-cupkat.com.br/api/checkout/payment-intent';
 
 
   constructor(private httpClient: HttpClient) { }
